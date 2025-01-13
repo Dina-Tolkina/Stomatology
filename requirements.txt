@@ -1,0 +1,5 @@
+Django==5.0.1
+Pillow==9.2.0
+psycopg2==2.9.9
+python-decouple==3.8
+
