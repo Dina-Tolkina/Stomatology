@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'components/form_user/form_user.css' %}">
+<link rel="stylesheet" href="{% static 'page/login_page/login.css' %}">
+
+{% endblock %}
+
+{% block title %}Войти{% endblock %}
+
+{% block content %}
+<div class="parralax-wrap">
+    <section class="form_user">
+    <h2>Вход</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+        </form>
+        <p class="link"><a href="{% url 'register' %}">Нет аккаунта? Зарегистрироваться</a></p>
+    </section>
+</div>
+{% if errors %}
+    <div id="error-alert" class="error-alert">
+      <h3>Ошибка заполнения формы</h3>
+      <div class="error-body">
+        <img src="/static/GLOBAL/img/icon-error.png" alt="Ошибка" class="error-icon">
+        <ul>
+          {% for key, error in errors.items %}
+            <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <label for="close-error" class="close-btn" onclick="this.parentElement.style.display='none';">×</label>
+    </div>
+  {% endif %}
+{% endblock %}
+

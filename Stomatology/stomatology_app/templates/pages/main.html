@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'page/main_page/main.css' %}">
+
+{% endblock %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <section class="container_main">
+        <div class="container_header">
+          <div class="text_block">
+              <h2 class="item__headline">Забота о ваших зубах - наш приоритет! </h2>
+              <p>Запишитесь сегодня и сделайте шаг к здоровым и красивым зубам!</p>
+              <a href="{% url 'create_consultation' %}">
+                <button type="submit">Записаться на приём</button>
+              </a>
+          </div>
+          <div class="container_header_img">
+            <div class="masked-element">
+                <img src="{% static 'GLOBAL/img/main_page/img_header_2.jpg' %}" class="hexagon_img">
+            </div>
+            <div class="masked-element">
+                <img src="{% static 'GLOBAL/img/main_page/img_header.jpg' %}" class="hexagon_img">
+            </div>
+
+            <div class="small-hexagon first-hex"></div>
+            <div class="small-hexagon second-hex"></div>
+          </div>
+        </div>
+        <div class="container_body">
+          <div class="about_us">
+            <div class="about_us_text">
+              <h1 class="section-title">О клинике</h1>
+              <p>Мы предоставляем широкий ассортимент стоматологических услуг, используя передовые технологии и высококачественные материалы. </p>
+              <p>Все наши кабинеты оснащены современным оборудованием.</p>
+              <p>Наши сотрудники с вниманием относятся к каждому пациенту, готовы ответить на любые вопросы и предоставить необходимую информацию.</p>
+            </div>
+            <div class="container_body_img">
+              <div class="overlay-image">
+                <img src="{% static 'GLOBAL/img/main_page/interior-stomatology.jpg' %}" alt="Interior of the clinic">
+              </div>
+              <div class="large-image">
+                <img src="{% static 'GLOBAL/img/main_page/woman-patient-dentist.jpg' %}" alt="Patient with dentist">
+              </div>
+            </div>
+          </div>
+        
+          <div class="clinic-benefits">
+            <h2 class="section-title">Почему выбирают нас</h2>
+            <div class="swiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="advantage_card">
+                    <div class="circle-image">
+                      <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/dentist-icon.png' %}">
+                    </div>
+                    <div class="advantage_card_text">
+                      <h3>Квалифицированные стоматологи</h3>
+                      <p>Наши врачи постоянно совершенствуются и осваивают новые методы лечения.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="advantage_card">
+                    <div class="circle-image">
+                      <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/dentist-chair.png' %}">
+                    </div>
+                    <div class="advantage_card_text">
+                      <h3>Современные технологии</h3>
+                      <p>Применяем новейшее оборудование и материалы, соответствующие мировым стандартам.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="advantage_card">
+                    <div class="circle-image">
+                      <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/dental-record.png' %}">
+                    </div>
+                    <div class="advantage_card_text">
+                      <h3>Индивидуальный подход</h3>
+                      <p>Мы разрабатываем индивидуальный план лечения с учетом состояния здоровья и финансовых возможностей.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="advantage_card">
+                    <div class="circle-image">
+                      <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/waiting-hall.png' %}">
+                    </div>
+                    <div class="advantage_card_text">
+                      <h3>Комфортная атмосфера</h3>
+                      <p>Создаем дружелюбную атмосферу, чтобы визит был легким и приятным для каждого.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="swiper-slide">
+                  <div class="advantage_card">
+                    <div class="circle-image">
+                      <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/registration.png' %}">
+                    </div>
+                    <div class="advantage_card_text">
+                      <h3>Онлайн-запись на прием</h3>
+                      <p>Запись доступна круглосуточно — быстро и без звонков, просто заполните форму на сайте.</p>
+                    </div>
+                  </div>
+                </div>
+    
+              <div class="swiper-slide">
+                <div class="advantage_card">
+                  <div class="circle-image">
+                    <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/prices.png' %}">
+                  </div>
+                  <div class="advantage_card_text">
+                    <h3>Прозрачные цены</h3>
+                    <p>Никаких неожиданных затрат! Стоимость лечения всегда доступна заранее, чтобы вы могли заранее подготовиться.</p>
+                  </div>
+                </div>
+
+              </div>
+              <div class="swiper-slide">
+                <div class="advantage_card">
+                  <div class="circle-image">
+                    <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/minimum_wait.png' %}">
+                  </div>
+                  <div class="advantage_card_text">
+                    <h3>Минимальное ожидание</h3>
+                    <p>Работаем строго по записи, чтобы сократить время ожидания и уделить максимум внимания каждому пациенту.</p>
+                  </div>  
+                </div>
+              </div>
+
+              <div class="swiper-slide">
+                <div class="advantage_card">
+                  <div class="circle-image">
+                    <img src="{% static 'GLOBAL/img/main_page/clinic-benefits-icons/call.png' %}">
+                  </div>
+                  <div class="advantage_card_text">
+                    <h3>Всегда на связи</h3>
+                    <p>Консультируем по телефону, отвечая на все ваши вопросы.</p>
+                  </div>  
+                </div>
+              </div>
+            </div>
+              <!-- Стрелки -->
+              <div class="swiper-controls">
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div>
+            </div>    
+          </div>
+
+          <div class="service">
+            <h1 class="section-title">Услуги клиники</h1>
+              <div class="container_service_card">
+                {% for category, services in services_by_category.items %}
+                <div class="service_card">
+                  <a href="{% url 'services' %}#category-{{ category.id }}" class="category-link">
+                    <div class="image-container">
+                      <img src="{{ MEDIA_URL }}{{ category.photo.url }}" alt="Категории">
+                    </div>
+                    <div class="service_card_text">
+                      <h3>{{ category.name }}</h3>
+                    </div>
+                  </a>
+                </div>
+                {% empty %}
+                <h3>Нет категорий</h3>
+                {% endfor %}
+            </div> 
+          </div>
+
+          <div class="doctors-preview">
+            <div class="doctors-header">
+              <h2 class="section-title_doctors">Наши врачи</h2>
+              <div class="doctors-link-container">
+                <a href="{% url 'doctors' %}" class="doctors-link">Смотреть всех врачей</a>
+              </div>
+            </div>
+          
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                {% for doctor in doctors %}
+                  <div class="swiper-slide doctor-card">
+                    <a href="{% url 'doctors' %}#doctor-{{ doctor.id }}">
+                      <img src="{{ MEDIA_URL }}{{ doctor.photo.url }}" alt="{{ doctor.first_name }}">
+                      <h3 class="doctor-title">{{ doctor.first_name }} {{ doctor.last_name }}</h3>
+                      <p class="doctor-position">
+                        {% for specialization in doctor.specializations.all %}
+                          {{ specialization.name }}{% if not forloop.last %}, {% endif %}
+                        {% empty %}
+                          Должность не указана
+                        {% endfor %}
+                      </p>
+                      <div class="experience">
+                        <p>Стаж работы: {{ doctor.experience }} 
+                          {% if doctor.experience|slice:"-1:" == "1" and doctor.experience != "11" %}год
+                          {% elif doctor.experience|slice:"-1:" in "234" and doctor.experience not in "12,13,14" %}года
+                          {% else %}лет
+                          {% endif %}
+                        </p>
+                      </div>
+                    </a>
+                  </div>
+                {% empty %}
+                  <h2 class="no-doctors">Врачи пока не добавлены.</h2>
+                {% endfor %}
+              </div>
+              <div class="swiper-button">
+                <div class="swiper-button-next next-arrow"></div>
+                <div class="swiper-button-prev prev-arrow"></div>
+              </div>  
+            </div>
+          </div>
+    </section>
+
+
+<!-- Стили Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<!-- Swiper -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script src="{% static 'page/main_page/main.js' %}"></script>       
+{% endblock %}

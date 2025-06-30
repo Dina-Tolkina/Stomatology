@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'page/doctors_page/doctor.css' %}">
+
+{% endblock %}
+
+{% block title %}Врачи-стоматологи{% endblock %}
+
+{% block content %}
+<div class="parralax-wrap">
+  <section class="doctors">
+    <h2 class="section-title">Врачи-стоматологи</h2>
+    <div class="p__wrapper">
+      {% if doctors %}
+        {% for doctor in doctors %}
+          <div class="p__item">
+            <div class="doctor-card__header" id="doctor-{{ doctor.id }}">
+              <img src="{{ MEDIA_URL }}{{ doctor.photo.url }}" alt="doctor">
+              <h2 class="item__name">{{ doctor.first_name }} {{ doctor.last_name }}<br>{{ doctor.patronymic }}</h2>
+            </div>
+
+            <div class="item__description">
+              <div class="item__specializations">
+                <h3>Должность:</h3>
+                  <p>
+                  {% for specialization in doctor.specializations.all %}
+                    {{ specialization.name }}{% if not forloop.last %}, {% endif %}
+                  {% empty %}
+                    Нет должности
+                  {% endfor %}
+                  </p>
+              </div>
+              <div class="experience">
+                <h3>Стаж работы: </h3>
+                <p>
+                  {{ doctor.experience }} 
+                  {% if doctor.experience|slice:"-1:" == "1" and doctor.experience != "11" %}год
+                  {% elif doctor.experience|slice:"-1:" in "234" and doctor.experience not in "12,13,14" %}года
+                  {% else %}лет
+                  {% endif %}
+                </p>
+              </div>
+
+              <div class="dropdown">
+                <details class="dropdown-item">
+                  <summary>Образование</summary>
+                  <ul>
+                    {% for education in doctor.education.all %}
+                      <li>
+                        <strong>{{ education.institution }}</strong><br>
+                        <span><strong>Степень/Специальность:</strong> {{ education.degree }}<br><strong>Год окончания:</strong> {{ education.year_of_graduation }} г.</span>
+                      </li>
+                    {% empty %}
+                      <li>Нет данных об образовании</li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </div>
+
+              <div class="dropdown">
+                <details class="dropdown-item-service">
+                  <summary>Услуги</summary>
+                  <ul>
+                    {% for service in doctor.services.all %}
+                      {% if service.name != "Другая услуга" %}
+                        <li>
+                          <a href="{% url 'services' %}#service-{{ service.id }}">{{ service.name }}</a>
+                        </li>
+                      {% endif %}
+                    {% empty %}
+                      <li>Услуги не назначены</li>
+                    {% endfor %}
+                  </ul>
+                </details>
+              </div>            
+            </div>
+          </div>
+        {% endfor %}
+    </div>
+    {% else %}
+      <h2 class="no-doctors">Врачи пока не добавлены.</h2>
+    {% endif %}
+  </section>
+</div>
+
+<script src="{% static 'page/doctors_page/doctor.js' %}"></script>  
+{% endblock %}
+

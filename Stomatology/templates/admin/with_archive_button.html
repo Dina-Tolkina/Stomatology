@@ -1,0 +1,14 @@
+{% extends "admin/change_list.html" %}
+
+{% block object-tools-items %}
+    {% if archived_mode %}
+        <li>
+            <a href="../" class="button">Вернуться к активным записям</a>
+        </li>
+    {% else %}
+        {{ block.super }}
+        <li>
+            <a href="archived/" class="button">Посмотреть архив</a>
+        </li>
+    {% endif %}
+{% endblock %}

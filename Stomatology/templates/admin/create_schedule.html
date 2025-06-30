@@ -1,0 +1,98 @@
+{% extends "admin/base_site.html" %}
+{% load static %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" href="{% static 'page/admin_page/admin.css' %}">
+    <link rel="stylesheet" href="{% static 'page/admin_page/create_schedule.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+{% endblock %}
+
+{% block extrahead %}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const flatpickrInstance = flatpickr(".flatpickr", {
+                mode: "multiple",
+                dateFormat: "Y-m-d",
+                minDate: "today",
+                locale: "ru",
+                inline: true,
+                onChange: function(selectedDates, dateStr, instance) {
+                    const display = document.querySelector('.selected-dates');
+                    if (selectedDates.length) {
+                        display.textContent = selectedDates
+                            .map(date => date.toLocaleDateString('ru-RU'))
+                            .join(', ');
+                    } else {
+                        display.textContent = 'Даты не выбраны';
+                    }
+                }
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block content %}
+    <div id="content-main">
+        <h1>Создание расписания</h1>
+        <form method="post" class="schedule-form">{% csrf_token %}
+            <div class="form-grid">
+                <div class="form-row doctors-field">
+                    {{ form.doctors.label_tag }}
+                    <div class="doctors-checkboxes">
+                        {{ form.doctors }}
+                    </div>
+                    {{ form.doctors.errors }}
+                </div>
+                <div class="form-row dates-field">
+                    {{ form.dates.label_tag }}
+                    <div class="calendar-wrapper">
+                        {{ form.dates }}
+                    </div>
+                    {{ form.dates.errors }}
+                </div>
+            </div>
+            <div class="form-row times-field">
+                {{ form.times.label_tag }}
+                <div class="times-grid">
+                    <div class="time-group">
+                        <h4>Утро</h4>
+                        <ul>
+                            {% for value, label in form.times.field.choices %}
+                                {% if value|slice:":2" < "12" %}
+                                    <li><input type="checkbox" name="times" value="{{ value }}" class="time-checkbox" id="id_times_{{ forloop.counter0 }}"> <label for="id_times_{{ forloop.counter0 }}">{{ label }}</label></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="time-group">
+                        <h4>День</h4>
+                        <ul>
+                            {% for value, label in form.times.field.choices %}
+                                {% if value|slice:":2" >= "12" and value|slice:":2" < "17" %}
+                                    <li><input type="checkbox" name="times" value="{{ value }}" class="time-checkbox" id="id_times_{{ forloop.counter0 }}"> <label for="id_times_{{ forloop.counter0 }}">{{ label }}</label></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="time-group">
+                        <h4>Вечер</h4>
+                        <ul>
+                            {% for value, label in form.times.field.choices %}
+                                {% if value|slice:":2" >= "17" %}
+                                    <li><input type="checkbox" name="times" value="{{ value }}" class="time-checkbox" id="id_times_{{ forloop.counter0 }}"> <label for="id_times_{{ forloop.counter0 }}">{{ label }}</label></li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                {{ form.times.errors }}
+                <div class="submit-row">
+                    <input type="submit" class="default" value="Сохранить расписание">
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}

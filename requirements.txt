@@ -1,5 +1,10 @@
-Django==5.0.1
-Pillow==9.2.0
+Django==4.2.11
+psycopg2-binary==2.9.9
+Pillow==10.4.0
 psycopg2==2.9.9
 python-decouple==3.8
-
+django-admin-rangefilter==0.13.0
+django-rangefilter
+django-ckeditor-5
+django-smart-selects==1.6.0
+django-allauth==65.0.2

@@ -1,0 +1,27 @@
+{% extends "admin/base.html" %}
+
+{% load static %}
+
+{% block extrastyle %}
+<link rel="stylesheet" href="{% static 'page\admin_page\admin.css' %}">
+{% endblock %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Страница администратора') }}{% endblock %}
+
+{% block branding %}
+<div id="site-name">
+    
+        <a href="{% url 'admin:index' %}" class="nav__logo">
+            <div class="nav__logo__img">
+                <img src="{% static 'GLOBAL/img/logo.png' %}" alt="logo">
+            </div>
+       
+        {{ site_header|default:_('Страница администратора') }}</a>
+    
+</div>
+{% if user.is_anonymous %}
+  {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+

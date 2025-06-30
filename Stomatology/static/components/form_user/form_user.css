@@ -1,0 +1,471 @@
+/* Окно с ошибкой  */
+.error-alert {
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: var(--color-dark);
+    padding: 25px 30px;
+    font-size: 1rem;
+    z-index: 1000;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    max-width: 90%;
+    min-width: 25rem;
+    animation: fadeIn 0.3s ease-out;
+    flex-direction: column;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -55%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.error-alert h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--definition-text);
+    margin-bottom: 10px;
+}
+.error-content {
+    display: flex;
+    align-items: center; 
+    gap: 12px;
+}
+.error-body {
+    display: flex;
+    align-items: center;
+}
+.error-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.1rem;
+    opacity: 0.8;
+    flex-shrink: 0;
+}
+.error-alert li {
+    padding-left: 0.7rem;
+    font-size: 1rem;
+    color: var(--title-color);
+    flex-grow: 1;
+    white-space: normal;
+    list-style: none;
+}
+form ul.errorlist {
+    display: none;
+}
+ul.errorlist {
+    list-style: none;
+    font-size: 1rem;
+    color: var(--title-color);
+    padding: 0;
+    margin: 0;
+}
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--color-dark);
+    transition: color 0.2s ease-in-out;
+}
+.close-btn:hover {
+    color: var(--accent-color); 
+}
+
+
+.form_user {
+    max-width: 45rem; 
+    width: 45rem;
+    margin: 3.125rem auto;
+    padding: 1.25rem; 
+    background-color: #fff;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.4); 
+    border-radius: 8px;
+}
+.form_user h2 {
+    font-size: 1.8em;
+    margin-bottom: 1.25rem; 
+    color: var(--title-color);
+    text-align: center;
+}
+.form-container {
+    display: flex;
+    gap: 20px; 
+    justify-content: space-between;
+}
+.form-column {
+    width: 48%; 
+}
+
+p {
+    justify-content: space-between;
+    display: flex;
+}
+
+::placeholder {
+    color: var(--text-color);
+    opacity: 1; 
+}
+
+input.custom-date-input {
+    padding: 10px 40px 10px 10px; 
+    background: url('/static/GLOBAL/img/calendar-icon.png') no-repeat;
+    background-size: 20px;
+    background-position: right 10px center;
+    cursor: pointer;
+
+    appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0; 
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    width: 100%;
+}
+
+input[type="date"]:focus,
+input[type="date"]:active,
+input[type="date"]:focus-within {
+    border-color: var(--accent-color);
+    background-image: url('/static/GLOBAL/img/calendar-icon-two.png');
+}
+
+.custom-date-input:empty::before {
+    content: attr(placeholder);
+    color: var(--text-color);
+}
+/* Календарь */
+.flatpickr-calendar {
+    border-radius: 0 !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+.flatpickr-months .flatpickr-month {
+    background: rgb(133 216 247) !important;
+    box-shadow: 0px 4px 12px rgb(117 218 255 / 43%);
+}
+/* Выделение выбранного дня */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.inRange,
+.flatpickr-day.selected:focus {
+    background: #fff !important;
+    color: #393939 !important;
+    border: 1px solid var(--text-color) !important;
+}
+.flatpickr-day.today {
+    background: #fff !important;
+    color: #393939 !important;
+    border: 1px solid transparent !important; 
+}
+.flatpickr-day.today:hover {
+    background: #e6e6e6 !important;
+    border-color: #e6e6e6 !important;
+}
+.flatpickr-day.today.selected {
+    border: 1px solid var(--text-color) !important;
+    background: #fff !important;
+    color: #393939 !important;
+}
+.flatpickr-day.selected:hover {
+    border-color: #959ea9 !important;
+    background: #959ea9 !important;
+    color: #fff !important;
+}
+
+/* Контейнер выбора времени */
+#time-container {
+    display: none;
+    position: absolute;
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+    width: auto;
+    max-width: 100%;
+    box-sizing: border-box;
+    border-radius: 0;
+    animation: fadeIn 0.2s ease-in-out;
+    position: absolute;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+#time-container.no-grid {
+    grid-template-columns: none;
+}
+/* Стрелочка */
+#time-container::after {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 10px; 
+    border-left: 4px solid transparent; 
+    border-right: 4px solid transparent; 
+    border-bottom: 4px solid #fff; 
+}
+
+/* Кнопки времени */
+.time-button {
+    font-size: 1em;
+    padding: 12px 5px;
+    border: 1px solid var(--text-color);
+    background: #fff;
+    color: #393939;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    width: 6rem;
+    text-align: center;
+    border-radius: 0; 
+    font-weight: 500;
+    border-radius: 20px;
+}
+
+/* Наведение на кнопку */
+.time-button:hover {
+    background: #e6e6e6;
+    border-color: #e6e6e6;
+}
+
+/* Выбранное время */
+.time-button:focus {
+    background: #959ea9 !important;
+    color: #fff !important;
+    border-color: #959ea9 !important;
+}
+.time-button.selected {
+    background: #959ea9 !important;
+    color: #fff !important;
+    border-color: #959ea9 !important;
+}
+
+
+/* Поле ввода времени */
+.time-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; 
+    border: 1px solid var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #fff;
+    background-image: url('/static/GLOBAL/img/clock-icon.png');
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border-radius: 0;
+    font-weight: 500;
+}
+
+/* При фокусе */
+.time-input:focus {
+    border-color: var(--first-color);
+    background-image: url('/static/GLOBAL/img/clock-icon-two.png');
+    outline: none;
+}
+
+label[for="id_other_service"], #id_other_service {
+    display: none;
+}
+
+label {
+    flex: 0.5;
+    margin-right: 0.625rem;
+    font-size: 1.2em;
+    color: var(--color-dark);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+input[type="password"],
+textarea,
+select {
+    flex: 2;
+    padding: 0.625rem; 
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    border: 1.6px solid var(--text-color);
+    outline: none;
+    transition: border-color 0.10s, color 0.10s; 
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.item__name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--title-color);
+    margin: 10px 0;
+}
+
+input[type="text"]:focus, 
+input[type="email"]:focus, 
+input[type="password"]:focus, 
+textarea:focus,
+input[type="date"]::before {
+    border-color: var(--first-color); 
+}
+
+input[type="text"]::before,
+input[type="email"]::before,
+input[type="password"]::before,
+textarea::before,
+input[type="date"]::before {
+    background: var(--first-color);
+    transform: scaleX(0);
+    transition: transform 0.10s;
+}
+
+input[type="text"]:focus::before,
+input[type="email"]:focus::before,
+input[type="password"]:focus::before,
+textarea:focus::before,
+input[type="date"]:focus::before {
+    transform: scaleX(1); 
+}
+
+button[type="submit"] {
+    padding: 0.7rem 1rem;
+    background-color: var(--first-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    width: auto; 
+    margin-left: auto;
+    display: block; 
+    border-radius: 35px;
+}
+
+button[type="submit"]:hover {
+    background-color: var(--definition-text);
+}
+
+@media (max-width: 950px) {
+    .form_user {
+        width: 35rem;
+        margin: 1rem auto;
+    }    
+    .form-container {
+        flex-direction: column;
+        align-items: stretch;
+        width: 90%;
+        padding: 0 1rem;
+    }
+    .form-column {
+        width: 80%;
+        margin: 0 auto;
+    }
+    input[type="text"], input[type="email"], input[type="date"], input[type="password"], textarea, select {
+        font-size: 0.80rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    label {
+        font-size: 1rem;
+        margin: 0;
+        display: block; 
+        white-space: normal; 
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
+    button[type="submit"] {
+        padding: 0.7rem 1rem;
+        width: -webkit-fill-available;
+        margin: 0.5rem auto;
+    }
+}
+@media (max-width: 800px) {
+    .form_user {
+        width: 30rem;
+    }
+    form div {
+        flex-direction: column;
+        align-items: center;
+    }    
+    .form-column {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .input[type="text"], input[type="email"], input[type="date"], input[type="password"], textarea, select {
+        width: 100%; 
+    }
+    .time-button {
+        font-size: 0.8em;
+        padding: 5px 5px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .form-container {
+        width: 95%;
+    }
+    .form-column {
+        width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    .form_user {
+        width: 25rem;
+    } 
+    label {
+        font-size: 0.95rem
+    }
+}
+
+@media (max-width: 465px) {
+    .content-wrapper {
+        padding: 0;
+    }
+    .form_user {
+        width: 23rem;
+        margin: 1.1rem;
+    } 
+    label {
+        font-size: 0.90rem;
+    }
+    .form-container {
+        padding: auto;
+    }
+}
+@media (max-width: 440px) {
+    .content-wrapper {
+        padding: 0;
+    }
+    .form_user {
+        width: 20rem;
+        margin: 1.1rem;
+    } 
+    p {
+        display: block;
+    }   
+}

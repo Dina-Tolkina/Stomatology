@@ -1,0 +1,264 @@
+#content-main {
+    max-width: 50vw;
+    margin: 1.5rem auto;
+    padding: 1.5rem;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px hsla(220, 68%, 12%, 0.2);
+    float: none;
+}
+
+.schedule-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+#content-main h1 {
+    color: var(--title-color);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--first-color);
+    padding-bottom: 0.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15vw;
+    align-items: start;
+    margin: auto;
+}
+
+.form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.form-row label {
+    font-size: 1.3rem;
+    color: var(--title-color);
+    font-weight: var(--font-medium);
+}
+
+.doctors-field {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.doctors-field .doctors-checkboxes {
+    background: rgb(46 201 255 / 20%);
+    max-height: 40vh;
+    overflow-y: auto;
+    border-radius: 4px;
+    padding: 0.5rem;
+    transition: border-color 0.3s;
+}
+.doctors-field .doctors-checkboxes:hover {
+    border-color: var(--first-color);
+}
+.doctors-field ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.doctors-field li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    transition: background 0.2s;
+}
+.doctors-field li:hover {
+    background: rgba(46, 201, 255, 0.1);
+}
+.doctors-field input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.doctors-field input[type="checkbox"]:hover {
+    transform: scale(1.2);
+}
+.doctors-field label {
+    font-size: 1.3rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+
+.flatpickr-calendar {
+    border-radius: 0 !important;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+.flatpickr-months .flatpickr-month {
+    background: rgb(133 216 247) !important;
+    box-shadow: 0px 4px 12px rgb(117 218 255 / 43%);
+}
+
+/* Обычные дни */
+.flatpickr-day {
+    background: #fff !important;
+    color: #393939 !important;
+    border: 1px solid transparent !important;
+}
+
+/* Наведение только для выбираемых, но не выбранных дней */
+.flatpickr-day:not(.disabled):not(.flatpickr-disabled):not(.selected):not(.startRange):not(.endRange):hover {
+    background: #e6e6e6 !important;
+    border: 1px solid #e6e6e6 !important;
+}
+
+/* Сегодняшний день */
+.flatpickr-day.today {
+    border: 1px solid var(--text-color) !important;
+}
+
+/* Выбранные дни и диапазоны */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange,
+.flatpickr-day.inRange,
+.flatpickr-day.selected:focus,
+.flatpickr-day.today.selected {
+    background: rgb(133, 216, 247) !important;
+    color: #fff !important;
+    border: none !important;
+}
+
+/* Отключенные дни */
+.flatpickr-day.disabled,
+.flatpickr-day.flatpickr-disabled {
+    color: #999 !important;
+    cursor: not-allowed !important;
+}
+
+
+.dates-field input[type="text"] {
+    display: none;
+}
+.dates-field .selected-dates {
+    font-size: 0.9rem;
+    color: var(--title-color);
+    margin: 0.5rem 0;
+    min-height: 1.2rem;
+}
+.dates-field .clear-dates {
+    display: block;
+    margin: 0.5rem 0 0;
+    padding: 0.5rem 1rem;
+    background: #fff;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--title-color);
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s, transform 0.2s;
+}
+.dates-field .clear-dates:hover {
+    background: rgba(46, 201, 255, 0.1);
+    border-color: var(--first-color);
+    transform: scale(1.05);
+}
+
+.times-field .times-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+.times-field .time-group {
+    background: rgb(46 201 255 / 20%);
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+.times-field .time-group h4 {
+    font-size: 0.95rem;
+    color: var(--title-color);
+    margin: 0 0 0.5rem;
+}
+.times-field ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.times-field li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.2rem 0;
+}
+.times-field input[type="checkbox"] {
+    width: 1rem;
+    height: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.times-field input[type="checkbox"]:hover {
+    transform: scale(1.2);
+}
+.times-field label {
+    font-size: 1.3rem;
+    color: var(--title-color);
+    cursor: pointer;
+}
+
+.errorlist {
+    color: #d32f2f;
+    font-size: 0.9rem;
+    margin-top: 0.3rem;
+}
+
+.submit-row {
+    display: flex;
+    justify-content: flex-end;
+}
+input[type="submit"].default {
+    background: var(--first-color);
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: var(--font-medium);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+input[type="submit"].default:hover {
+    background: var(--accent-color);
+    box-shadow: 0 0 10px rgba(46, 201, 255, 0.7);
+    transform: scale(1.05);
+}
+
+@media (max-width: 1000px) {
+    #content-main {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .dates-field .calendar-wrapper {
+        transform: scale(0.9);
+    }
+
+    .doctors-field .doctors-checkboxes {
+        max-height: 200px;
+    }
+
+    .times-field .times-grid {
+        grid-template-columns: 1fr;
+    }
+
+    input[type="submit"].default {
+        width: 100%;
+        padding: 0.8rem;
+    }
+}

@@ -1,0 +1,484 @@
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0.5rem 0;
+    color: #333;
+}
+
+.profile_form {
+    max-width: 45rem;
+    width: 45rem;
+    margin: 3.125rem auto;
+    padding: 1.25rem;
+    background-color: #fff;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.link {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.2rem 0;
+    font-size: 1.1rem;
+}
+.link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.link a:hover {
+    color: #0056b3;
+}
+
+.details_name {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin: 0.5rem 0;
+}
+.details {
+    padding-left: 1rem;
+    text-align: left;
+    font-size: 1.25rem;
+    color: #555;
+    margin: 0.75rem 0;
+}
+
+.consultation {
+    margin-top: 1.5rem;
+    background: hsl(220, 60%, 97%);
+    padding: 1rem;
+    border-radius: 8px;
+}
+.title_consultation {
+    font-size: 1.5rem;
+    margin: 0.75rem 0;
+    color: #333;
+    font-weight: 600;
+}
+.consultation_filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem auto 1rem;
+    align-items: center;
+}
+.consultation_filters label {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 500;
+}
+.consultation_filters select {
+    padding: 0.3rem;
+    font-size: 1rem;
+    border: 1.6px solid var(--text-color);
+    outline: none;
+    transition: border-color 0.10s, color 0.10s;
+    border-radius: 35px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: border-color 0.2s;
+    width: 10rem;
+}
+.item_consultation_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.item_consultation {
+    position: relative; 
+    background: #fff;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease-out;
+}
+.item_consultation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.details_consultation {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #444;
+}
+.item_consultation:not(:last-child) {
+    border-bottom: 1px solid #e0e0e0;
+}
+.consultation p {
+    font-size: 1rem;
+    color: #666;
+    text-align: start;
+    margin: 0.75rem 0.75rem;
+}
+p.no_consultation {
+    text-align: center;
+    padding: 1.75rem 1rem 0 1rem;
+    font-size: 1.15rem;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: 1rem;
+}
+.item_consultation form {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 1rem;
+}
+
+.item_consultation form label {
+    font-weight: bold;
+    color: var(--color-dark);
+}
+
+.notes {
+    text-align: start;
+    margin-left: 1rem;
+}
+
+.item_consultation form select,
+.item_consultation form textarea {
+    padding: 0.3rem;
+    font-size: 1rem;
+    border: 1.6px solid var(--text-color);
+    outline: none;
+    transition: border-color 0.10s, color 0.10s;
+    border-radius: 35px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: border-color 0.2s;
+    width: 10rem;
+}
+
+.item_consultation form textarea {
+    resize: vertical;
+    min-height: 7rem;
+    width: auto;
+    border-radius: 10px;
+    margin-left: 0.75rem;
+}
+.item_consultation form button {
+    padding: 0.7rem 1rem;
+    background-color: var(--first-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    width: auto;
+    margin-left: auto;
+    display: block;
+    border-radius: 35px;
+}
+
+.item_consultation form button:hover {
+    background-color: var(--definition-text);
+}
+.call-status .status-success {
+    color: #0bc003;
+    font-weight: 500;
+}
+.call-status .status-no_answer {
+    color: #e9bd04;
+    font-weight: 500;
+}
+.call-status .status-failed {
+    color: #ff5d4e;
+    font-weight: 500;
+}
+.call-status .status-not-started {
+    color: #ff5d4e; 
+    font-weight: bold;
+}
+.edit-log-btn {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s, transform 0.1s, opacity 0.2s;
+    z-index: 2;
+    right: 1rem;
+}
+.edit-log-btn:hover {
+    transform: scale(1.2);
+}
+.edit-log-btn:active {
+    transform: scale(1);
+}
+.edit-log-btn .edit-img {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.2s;
+}
+.edit-log-btn:hover .edit-img {
+    opacity: 0.7;
+}
+
+.form-communication-log {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+.form-communication-log label {
+    font-weight: 500;
+    font-size: 1rem;
+    border-top: 1px solid #e0e0e0;
+}
+.form-communication-log select {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    outline: none;
+    background-color: #f8f9fa;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer;
+    width: 100%;
+    max-width: 16rem;
+}
+.form-communication-log select:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    background-color: #fff;
+}
+.form-communication-log textarea {
+    padding: 0.6rem;
+    font-size: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    width: 100%;
+    background-color: #f8f9fa;
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+.form-communication-log textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    background-color: #fff;
+}
+.form-communication-log button {
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+    align-self: flex-start;
+}
+.form-communication-log button:hover {
+    background-color: #0056b3;
+    transform: translateY(-1px);
+}
+.form-communication-log button:active {
+    transform: translateY(0);
+}
+
+
+@media (max-width: 800px) {
+    .profile_form {
+        max-width: 90%;
+        padding: 1rem;
+        margin: 1.5rem auto;
+    }
+
+    .consultation_filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .consultation_filters select {
+        width: 100%;
+    }
+
+    .section-title {
+        font-size: 1.75rem;
+    }
+
+    .title_consultation {
+        font-size: 1.25rem;
+    }
+
+    .details_name {
+        font-size: 1.25rem;
+    }
+
+    .details {
+        font-size: 1rem;
+    }
+
+    .form-communication-log select,
+    .form-communication-log textarea {
+        max-width: 100%;
+    }
+
+    .form-communication-log button {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    .edit-log-btn {
+        width: 28px;
+        height: 28px;
+    }
+
+    .edit-log-btn .edit-img {
+        width: 18px;
+        height: 18px;
+    }
+}
+
+@media (max-width: 700px) {
+    .profile_form {
+        max-width: 75%;
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+}
+
+@media (max-width: 615px) {
+    .profile_form {
+        max-width: 65%;
+    }
+}
+
+@media (max-width: 550px) {
+    .profile_form {
+        max-width: 55%;
+    }
+}
+
+@media (max-width: 450px) {
+    .profile_form {
+        max-width: 47%;
+        padding: 0.75rem;
+    }
+
+    .consultation p, .details {
+        font-size: 0.9rem;
+    }
+    .consultation {
+        padding: 0.75rem;
+    }
+
+    .item_consultation {
+        padding: 0.75rem;
+    }
+
+    .details_consultation {
+        font-size: 0.9rem;
+    }
+
+    .form-communication-log label {
+        font-size: 0.9rem;
+    }
+
+    .form-communication-log select,
+    .form-communication-log textarea {
+        font-size: 0.9rem;
+    }
+
+    .form-communication-log button {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .edit-log-btn {
+        width: 24px;
+        height: 24px;
+    }
+
+    .edit-log-btn .edit-img {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .profile_form {
+        max-width: 43%;
+        margin: 1rem auto;
+        padding: 0.5rem;
+    }
+    .link {
+        font-size: 1rem;
+    }
+    .details {
+        font-size: 0.85rem;
+    }
+    .consultation p {
+        font-size: 0.8rem;
+        margin: 0.5rem 0.5rem;
+    }
+    .item_consultation form label {
+        font-size: 0.8rem;
+    }
+    .item_consultation {
+        padding: 0.5rem;
+    }
+    .item_consultation form select {
+        width: 8rem;
+    }
+    .item_consultation form textarea {
+        width: 15rem;
+    }
+}
+
+@media (max-width: 350px) {
+    .profile_form {
+        max-width: 40%;
+    }
+    .details_name {
+        font-size: 1.1rem;
+    }
+    .item_consultation form select {
+        font-size: 0.9rem;
+        width: 7rem;
+    }
+    .item_consultation form textarea {
+        font-size: 0.9rem;
+        width: 14rem;
+    }
+    .details {
+        font-size: 0.8rem;
+        padding-left: 0.5rem;
+    }
+    .consultation p {
+        margin: 0.5rem 0.3rem;
+    }
+    .item_consultation form button {
+        padding: 0.5rem 0.6rem;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 330px) {
+    .profile_form {
+        max-width: 37%;
+    }
+    .item_consultation form label {
+        font-size: 0.75rem;
+    }
+    .item_consultation form textarea {
+        width: 12.5rem;
+    }
+}

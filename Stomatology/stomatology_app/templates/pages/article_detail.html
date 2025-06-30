@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'page/articles_page/articles_detail.css' %}">
+{% endblock %}
+
+{% block title %}Статья{% endblock %}
+
+{% block content %}
+<section class="articles-section">
+    <div class="container">
+        <div class="article-card">
+            <div class="article_text">
+                <h1 class="title_article">{{ article.title }}</h1>
+                <div class="full_text">{{ article.full_text|safe }}</div>
+                <p class="date">{{ article.publication_date|date:"d.m.Y" }}</p>
+            </div>
+            <img src="{{ article.img.url }}" alt="Картинка" class="img_article">
+        </div>   
+    </div>
+    {% if article.category == 'Акции и Скидки' %}
+    <div class="contact-for-visit">
+        <h2>Запишитесь на приём</h2>
+        <p class="subtext">Выберите удобный способ и получите консультацию без ожидания.</p>
+        <div class="contact-actions">
+            <div class="contact-method">
+                <span class="method-title">По телефону</span>
+                <a href="tel:+74712238223" class="method-link">+7 (4712) 23-82-23</a>
+            </div>
+            <div class="divider"></div>
+            <div class="contact-method">
+                <span class="method-title">Контакты</span>
+                <a href="{% url 'contacts' %}" class="method-link">Перейти к контактам</a>
+            </div>
+        </div>
+        <a href="{% url 'create_consultation' %}">
+            <button class="create_consultation_button">Записаться сейчас</button>
+        </a>
+    </div>
+    {% endif %}
+    <div class="similar_articles">
+        <h1 class="similar_articles_title">Похожие статьи</h1>
+        {% if similar_articles %}
+            <div class="container_similar_articles">
+                {% for similar in similar_articles %}
+                    <div class="similar_articles_cart">
+                        <a href="{% url 'article_detail' similar.pk %}">
+                            <img src="{{ similar.img.url }}" alt="Картинка" class="img_article">
+                            <h2 class="similar_articles_cart_title">{{ similar.title }}</h2>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2 class="no_similar_articles">Нет других статей в этой категории.</h2>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

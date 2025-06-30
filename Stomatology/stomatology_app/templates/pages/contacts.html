@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'page/contact_page/contact.css' %}">
+{% endblock %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block content %}
+<section class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Контакты</h2>
+        <div class="contact-wrapper">
+            <div class="contact-container" id="contact">
+                <div class="container_timetable">
+                    <h2>Режим работы:</h2>
+                    <div class="contact_details">
+                        <i class="fa fa-clock"></i>
+                        <p>
+                            <span>Пн-Пт: 09:00 - 21:00</span>
+                            <span>Сб, Вс: 10:00 - 20:00</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="contact_info">
+                    <h2>Контакты</h2>
+                    <div class="contact_details">
+                        <i class="fa fa-location"></i>
+                        <p>г.Курск, ул.Карла Маркса, д.49</p>
+                    </div>
+                    <div class="contact_details">
+                        <i class="fa fa-phone"></i>
+                        <p>+7 (4712) 23-82-23</p>
+                    </div>
+                    <div class="contact_details">
+                        <i class="fa fa-envelope"></i>
+                        <p>dentogendentistry@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-container" id="map">
+                <h3>Мы на карте</h3>
+                <div class="map">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7d64ab378b0ecfa237859955c4fa45951f0b626e8624e63533c7faf7cd830ac2&amp;source=constructor" width="335" height="400" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

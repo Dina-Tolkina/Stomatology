@@ -1,0 +1,27 @@
+.content-wrapper {
+    background: url('/static/GLOBAL/img/fon_content-wrapper.svg') no-repeat center top;
+    background-size: cover;
+}
+
+@media (min-width: 1930px) {
+    .content-wrapper {
+        background: url('/static/GLOBAL/img/fon_content-wrapper.svg') no-repeat center top !important;
+        background-size: cover !important;
+        background-size: 75% auto !important;
+    }
+}
+@media (min-width: 1700px) {
+    .content-wrapper {
+        background: url(/static/GLOBAL/img/fon_content-wrapper.svg) no-repeat center calc(0% + 1rem);
+        background-size: 85% auto;
+    }
+}
+
+@media (max-width: 465px) {
+    .content-wrapper {
+        padding: 0;
+    }
+}
+@media (max-width: 440px) {
+}
+

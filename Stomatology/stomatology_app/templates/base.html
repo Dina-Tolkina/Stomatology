@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{% static 'components/navbar/navbar.css' %}">
+  <link rel="stylesheet" href="{% static 'components/footer/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'GLOBAL/css/global.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+
+  {% block head %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+  <div class="global__wrapper">
+    <div class="wrapper">
+      <!-- Navigation -->
+      <div class="header__top">
+        <nav class="nav_container">
+          <div class="nav__data">
+            <a href="{% url 'home' %}" class="nav__logo">
+              <div class="nav__logo__img">
+              <img src="{% static 'GLOBAL/img/logo.png' %}" alt="logo"></div>
+              Стоматология "Дентоген"
+            </a>
+          
+          <input type="checkbox" id="nav-toggle" class="nav__checkbox">
+          <label for="nav-toggle" class="nav__toggle">&#9776;</label>
+          
+          <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li><a href="{% url 'home' %}" class="nav__link">Главная</a></li>
+            <li><a href="{% url 'services' %}" class="nav__link">Услуги</a></li>
+            <li><a href="{% url 'doctors' %}" class="nav__link">Врачи</a></li>
+            <li><a href="{% url 'articles' %}" class="nav__link">Новости</a></li>
+            <li><a href="{% url 'contacts' %}" class="nav__link">Контакты</a></li>
+            <li><a href="{% url 'create_consultation' %}" class="nav__link">Запись на консультацию</a></li>
+            <li class="nav__link_profile">
+              <a href="{% url 'profile' %}" class="nav__link">
+                <img src="{% static 'GLOBAL/img/profile.png' %}" alt="person" class="profile_img">
+                <span class="profile_text">Профиль</span>
+              </a>
+            </li>
+          </ul>
+          </div>
+        </nav>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="content-wrapper">
+        {% block content %}
+        {% endblock %}
+         <a class="upwards" href="#"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+        <div class="footer-row">
+              <div class="footer-col" id="company">
+                <a href="{% url 'home' %}" class="footer__logo">
+                  <div class="footer__logo__img">
+                  <img src="{% static 'GLOBAL/img/logo.png' %}" alt="logo"></div>
+                  <p class="footer__text">Стоматология "Дентоген"</p>
+                </a>
+              </div>
+
+              <div class="footer-col" id="useful-links">
+                 <h3>Ссылки</h3>
+                 <div class="footer-links">
+                    <a href="{% url 'home' %}">Главная</a>
+                    <a href="{% url 'services' %}">Услуги</a>
+                    <a href="{% url 'doctors' %}">Врачи</a>
+                    <a href="{% url 'articles' %}">Новости</a>
+                    <a href="{% url 'create_consultation' %}">Запись на консультацию</a>
+                 </div>
+              </div>
+
+              <div class="footer-col" id="contact">
+                  <h3>Контакты</h3>
+                  <div class="contact-details">
+                     <i class="fa fa-location"></i>
+                     <p> г.Курск, ул.Карла Маркса, д.49</p>
+                  </div>
+                  <div class="contact-details">
+                     <i class="fa fa-phone"></i>
+                     <p> +7 (4712) 23-82-23</p>
+                  </div>
+                  <div class="contact-details">
+                    <i class="fa fa-envelope"></i>
+                    <p>dentogendentistry@gmail.com</p>
+                 </div>
+              </div>
+        </div>
+    </div>
+ </footer>
+</body>
+</html>

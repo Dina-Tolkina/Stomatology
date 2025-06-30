@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'page/service_page/service.css' %}">
+
+{% endblock %}
+
+{% block title %}Услуги{% endblock %}
+
+{% block content %}
+<div class="parralax-wrap">
+    <section class="service">
+        <h2 class="section-title">Услуги</h2>
+        <div class="p__wrapper">
+            {% for category, services in services_by_category.items %}
+                <div class="p__item">
+                    <div class="item__category" id="category-{{ category.id }}">
+                        <div class="image-container">
+                            <img src="{{ MEDIA_URL }}{{ category.photo.url }}" alt="Категории">
+                        </div>
+                        <h2>{{ category.name }}</h2>
+                    </div>
+        
+                    <div class="item__service">
+                        <div class="item__service_cards"> 
+                            {% for service in services %}
+                                <div class="item__service_card" id="service-{{ service.id }}">
+                                    <div class="text_service">
+                                        <h3>{{ service.name }}</h3>
+                                        <p><strong>Описание: </strong>{{ service.description }}</p>
+                                        <p><strong>Цена: </strong>{{ service.price }} ₽</p>
+                                        <p><strong>Врачи, предоставляющие услугу:</strong> 
+                                            {% if service.doctors.all %}
+                                                {{ service.doctors.all|join:", " }}
+                                            {% else %}
+                                                Нет врачей
+                                            {% endif %}
+                                        </p>
+                                    </div>
+                                    <img src="{{ MEDIA_URL }}{{ service.photo.url }}" class="img_service">
+                                </div>
+                            {% empty %}
+                                <p>Услуг в этой категории нет</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <h2 class="no-categories">Нет доступных категорий услуг</h2>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+<script src="{% static 'page/service_page/service.js' %}"></script> 
+{% endblock %}

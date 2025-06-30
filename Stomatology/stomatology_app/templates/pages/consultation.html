@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'page/consultation_page/consultation.css' %}">
+<link rel="stylesheet" href="{% static 'components/form_user/form_user.css' %}">
+{% endblock %}
+
+{% block title %}Записаться на консультацию{% endblock %}
+
+{% block content %}
+<section class="form_user">
+    <h2>Запись на консультацию</h2>
+    {% if errors %}
+         <div id="error-alert" class="error-alert">                                      
+            <h3>Ошибка заполнения формы</h3>
+            <div class="error-body">
+                <img src="/static/GLOBAL/img/icon-error.png" alt="Ошибка" class="error-icon">                                                                           <ul>
+                    {% for error in errors.values %}
+                        <li>{{ error }}</li>                                                    {% endfor %}
+                </ul>
+            </div>
+            <label for="close-error" class="close-btn" onclick="this.parentElement.style.display='none';">×</label>                                             </div>
+    {% endif %}
+    {% if messages %}
+        <div id="messages-alert" class="error-alert">
+        <h3>Уведомления</h3>
+        <div class="error-body">
+            <ul>
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <label for="close-messages" class="close-btn" onclick="this.parentElement.style.display='none';">×</label>
+        </div>
+    {% endif %}
+    {% if not user.is_authenticated %}
+        <p>Пожалуйста, <a href="{% url 'login' %}">войдите</a> или <a href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
+    {% else %}
+        <form method="post" id="consultation-form">
+            {% csrf_token %}
+            {{ consultation_form.as_p }}
+            <button type="submit">Записаться</button>
+        </form>
+    {% endif %}
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ru.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@3.0.1/build/global/luxon.min.js"></script>
+
+<script src="{% static 'page/consultation_page/consultation.js' %}"></script>  
+{% endblock %}
+

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'page/profile_page/profile.css' %}">
+{% endblock %}
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<section class="profile">
+  {% if user.is_authenticated %}
+  <div class="profile_form">
+    <div class="profile_form_header">
+      <p class="link"><a href="{% url 'logout' %}">Выйти</a></p>
+      <h2 class="section-title">Профиль</h2>
+      <p class="details_name">{{ user.first_name }} {{ user.last_name }} {{ user.patronymic }}</p>
+      <p class="details">Электронная почта: {{ user.email }}</p>
+      <p class="details">Телефон: {{ user.phone_number }}</p>
+      {% if show_admin_panel %}
+        <p class="link"><a href="{% url 'admin:index' %}" class="btn">Перейти в админ-панель</a></p>
+      {% endif %}
+    </div>
+
+    {% if user.is_patient or user.is_doctor %}
+    <div class="consultation">
+      <h3 class="title_consultation">Ваши консультации</h3>
+      <div class="consultation_filters">
+        <label>Фильтр:</label>
+        <select class="filter-select" data-profile-url="{% url 'profile' %}">
+          <option value="today" {% if filter_by == 'today' %}selected{% endif %}>Сегодня</option>
+          <option value="upcoming" {% if filter_by == 'upcoming' %}selected{% endif %}>Предстоящие</option>
+          <option value="past" {% if filter_by == 'past' %}selected{% endif %}>Прошедшие</option>
+        </select>
+        <label>Сортировка:</label>
+        <select class="sort-select" data-profile-url="{% url 'profile' %}">
+          <option value="appointment__date" {% if sort_by == 'appointment__date' %}selected{% endif %}>По дате</option>
+          <option value="service__name" {% if sort_by == 'service__name' %}selected{% endif %}>По услуге</option>
+        </select>
+      </div>
+      {% if consultations %}
+        <div class="item_consultation_form">
+          {% for consultation in consultations %}
+            <div class="item_consultation">
+              {% if user.is_patient %}
+              <p class="details_consultation">Запись: {{ consultation.appointment }}</p>
+              <p class="details_consultation">Услуга: {{ consultation.service|default:consultation.other_service }}</p>
+              {% elif user.is_doctor %}
+                <p class="details_consultation">Пациент: {{ consultation.patient.first_name }} {{ consultation.patient.last_name }} {{ consultation.patient.patronymic }}</p>
+                <p class="details_consultation">Услуга: {{ consultation.service|default:consultation.other_service }}</p>
+                <p class="details_consultation">Дата: {{ consultation.appointment.date }} Время: {{ consultation.appointment.time }}</p>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="no_consultation">У вас нет запланированных консультаций.</p>
+      {% endif %}
+    </div>
+    {% endif %}
+
+    {% if user.is_admin %}
+    <div class="consultation">
+      <h3 class="title_consultation">Консультации на сегодня</h3>
+      {% if admin_consultations %}
+        <div class="item_consultation_form">
+          {% for consultation in admin_consultations %}
+            <div class="item_consultation">
+              {% with latest_log=consultation.communication_logs.last %}
+              <button class="edit-log-btn" data-consultation-id="{{ consultation.id }}" {% if not latest_log.status %}style="display: none;"{% endif %}>
+                <img src="{% static 'page/profile_page/edit.png' %}" alt="Редактировать" class="edit-img">
+              </button>
+              <p class="details_consultation">Пациент: {{ consultation.patient.first_name }} {{ consultation.patient.last_name }} {{ consultation.patient.patronymic }} {{ consultation.patient.phone_number }}</p>
+              <p class="details_consultation">Врач: {{ consultation.doctor.first_name }} {{ consultation.doctor.last_name }} {{ consultation.doctor.patronymic }}</p>
+              <p class="details_consultation">Услуга: {{ consultation.service|default:consultation.other_service }}</p>
+              <p class="details_consultation">Дата: {{ consultation.appointment.date }} Время: {{ consultation.appointment.time }}</p>
+              <p class="details_consultation call-status">
+                Статус звонка: 
+                <span class="status-{{ latest_log.status|default:'not-called' }}">
+                  {{ latest_log.get_status_display|default:"Не звонили" }}
+                </span>
+              </p>
+              {% if latest_log.admin %}
+                <p class="details_consultation admin-info">Администратор, проводивший звонок: {{ latest_log.admin.first_name }} {{ latest_log.admin.last_name }} {{ latest_log.admin.patronymic }}</p>
+              {% endif %}
+              <p class="details_consultation call-status">Время звонка: {{ latest_log.called_at }}</p>
+              {% if latest_log.notes %}
+                <p class="details_consultation">Примечания: {{ latest_log.notes }}</p>
+              {% endif %}
+              <form method="POST" action="{% url 'create_or_update_communication_log' consultation.id %}" class="communication-log-form" {% if latest_log.status %}style="display: none;"{% endif %}>
+                {% csrf_token %}
+                <div class="form-row">
+                  <label for="status">Статус звонка:</label>
+                  <select name="status" id="status">
+                    <option value="success" {% if latest_log.status == 'success' %}selected{% endif %}>Успешно</option>
+                    <option value="no_answer" {% if latest_log.status == 'no_answer' %}selected{% endif %}>Нет ответа</option>
+                    <option value="failed" {% if latest_log.status == 'failed' %}selected{% endif %}>Не удалось</option>
+                  </select>
+                </div>
+                <label class="notes">Примечания:</label>
+                <textarea name="notes">{{ latest_log.notes|default:"" }}</textarea>
+                <button type="submit">Сохранить</button>
+              </form>
+              {% endwith %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p class="no_consultation">Нет запланированных консультаций на сегодня.</p>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+  {% else %}
+    <p>Пользователь не авторизован.</p>
+  {% endif %}
+</section>
+
+<script>
+const filterSelect = document.querySelector('.filter-select');
+const sortSelect = document.querySelector('.sort-select');
+const profileUrl = filterSelect ? filterSelect.dataset.profileUrl : '';
+const filterBy = '{{ filter_by|default:"today" }}';
+
+if (filterSelect) {
+    filterSelect.addEventListener('change', function() {
+        window.location.href = profileUrl + '?filter=' + encodeURIComponent(this.value);
+    });
+} else {
+    console.error('Выбор фильтра не найден');
+}
+if (sortSelect) {
+    sortSelect.addEventListener('change', function() {
+        window.location.href = profileUrl + '?filter=' + encodeURIComponent(filterBy) + '&sort=' + encodeURIComponent(this.value);
+    });
+} else {
+    console.error('Сортировка не найдена');
+}
+
+document.querySelectorAll('.edit-log-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        const form = this.parentElement.querySelector('.communication-log-form');
+        const icon = this.querySelector('.edit-img');
+        if (form) {
+            if (form.style.display === 'none' || form.style.display === '') {
+                form.style.display = 'flex';
+                if (icon) icon.style.opacity = '0.7';
+            } else {
+                form.style.display = 'none';
+                if (icon) icon.style.opacity = '1';
+            }
+        } else {
+            console.error('Форма не найдена для кнопки:', this);
+        }
+    });
+});
+</script>
+{% endblock %}

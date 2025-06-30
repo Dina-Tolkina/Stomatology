@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'page/articles_page/articles.css' %}">
+{% endblock %}
+
+{% block title %}Новости{% endblock %}
+
+{% block content %}
+<section class="articles-section">
+    <div class="container">
+        <h2 class="section-title">Новости</h2>
+        <form method="get" class="article-filter-form" action="{% url 'articles' %}">
+            <div class="search-wrapper">
+                <input type="text" placeholder="Поиск" class="search-input" name="q" value="{{ request.GET.q }}">
+                <button type="submit" class="search-button">
+                    <img src="{% static 'GLOBAL\img\search.svg' %}" alt="Поиск">
+                </button>
+            </div>
+            <select name="articles_category" id="articles_category" class="category-select">
+                <option value="">Все категории</option>
+                {% for category in articles_category %}
+                    <option value="{{ category.category }}" {% if category.category == request.GET.articles_category %}selected{% endif %}>
+                        {{ category.category|capfirst }}
+                    </option>
+                {% endfor %}
+            </select>
+            <button type="submit" class="btn">Фильтровать</button>
+        </form>
+        
+        <div class="p__wrapper">
+            <div class="p__item">
+                {% for article in articles %}
+                <div class="article-card">
+                    <div class="left-section">
+                        {% if article.category == 'Акции и Скидки' and article.remaining_days is not None %}
+                            {% if article.remaining_days > 0 %}
+                                <div class="tag-badge">
+                                    🔥 Осталось {{ article.remaining_days }} дней!
+                                </div>
+                            {% else %}
+                                <div class="tag-badge ended">
+                                    Акция завершилась
+                                </div>
+                            {% endif %}
+                        {% endif %}
+    
+                        <div class="article_text">
+                            <h2 class="title_article">{{ article.title }}</h2>
+                            <p class="date">{{ article.publication_date|date:"d.m.Y" }}</p>
+                            <p class="description">{{ article.description }}</p>
+                            <a href="{% url 'article_detail' pk=article.pk %}" class="link_articles">Подробнее</a>
+                            <p class="category" style="--category-border-color: {% if article.category == 'Акции и Скидки' %}#ff5d4e{% elif article.category == 'Новости клиники' %}#0badf6{% elif article.category == 'Услуги и процедуры' %}#0bc003{% elif article.category == 'Полезные советы' %}#ffce00{% else %}#db0aff{% endif %};">
+                                {{ article.category }}
+                            </p>
+                        </div>
+                    </div>
+                
+                    <div class="right-section">
+                        <img src="{{ article.img.url }}" alt="Картинка" class="img_article">
+                        {% if article.category == 'Акции и Скидки' and article.remaining_days is not None %}
+                            {% if article.remaining_days > 0 %}
+                            <div class="button-container">
+                                <a href="{% url 'create_consultation' %}">
+                                    <button type="submit" class="create_consultation_button">Записаться на приём</button>
+                                </a>
+                            </div>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    </div>
+                {% empty %}
+                    <h2 class="no-articles">Пока нет опубликованных статей.</h2>
+                {% endfor %}
+            </div>
+        </div>        
+    </div>
+</section>
+{% endblock %}

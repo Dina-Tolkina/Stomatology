@@ -1,0 +1,436 @@
+.articles-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 5rem;
+}
+.container {
+    width: 100%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+.no-articles {
+    padding-top: 3.5rem;
+    color: var(--text-color);
+    font-size: 2.5rem;
+}
+
+.article-filter-form {
+    width: 75%;
+    margin: 0 auto; 
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+.search-wrapper {
+    position: relative;
+    flex: 3;
+}
+.search-input {
+    flex: 2;
+    padding: 0.625rem 0.35rem;
+    font-size: 1em;
+    width: 100%;
+    border: 1.6px solid var(--text-color);
+    outline: none;
+    transition: border-color 0.10s, color 0.10s;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.search-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.search-button img {
+    width: 20px;
+    height: 20px;
+}
+.category-select {
+    flex: 1;
+    padding: 0.625rem;
+    font-size: 1em;
+    width: 100%;
+    padding: 10px;
+    border: 1.6px solid var(--text-color);
+    outline: none;
+    transition: border-color 0.10s, color 0.10s;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.btn {
+    padding: 0.7rem 1rem;
+    background-color: var(--first-color);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+    width: auto;
+    border-radius: 35px;
+}
+.btn:hover {
+    background-color: var(--definition-text);
+}
+.p__wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.article-card {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+    width: 60rem;
+    margin-top: 2rem;
+    border-bottom: 1.5px solid var(--text-color);
+    background-color: rgb(213, 242, 252);
+}
+.right-section {
+    padding: 1.2rem;
+}
+.button-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin: 3.5rem 2rem;
+}
+.create_consultation_button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    background: linear-gradient(45deg, #ff6a00, #ff3523);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    animation: pulse 3.5s infinite; 
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3); 
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    }
+}
+
+.create_consultation_button:hover {
+    background: linear-gradient(45deg, #ff3523, #ff6a00);
+    transform: scale(1.05);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.3);
+}
+
+.article_text {
+    padding: 1rem 2rem;
+}
+.title_article {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+}
+.date {
+    margin: 0;
+    padding: 0 0 0.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1.5px solid var(--text-color);
+}
+.link_articles {
+    border-top: 3.5px solid var(--definition-text);
+    padding-right: 1rem;
+}
+.category {
+    text-align: left;
+    margin-top: 2.3rem;
+    border: 2px solid var(--category-border-color);
+    border-radius: 20px;
+    padding: 0.5rem;
+    width: max-content;
+}
+.img_article {
+    max-width: 22rem;
+    height: 15rem;
+}
+
+.badge-wrapper {
+    display: flex;
+    align-items: flex-start;
+    margin-right: 1rem;
+}
+.tag-badge {
+    background: #fff;
+    color: var(--title-color);
+    padding: 0.5rem 1rem;
+    border-radius: 0 20px 20px 0;
+    font-weight: 600;
+    width: fit-content;
+    margin: 2rem 0 0 0;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 1000px) {
+    .img_article {
+        max-width: 14rem;
+        height: 13rem;
+    }
+    .create_consultation_button {
+        padding: 0.3rem 1.5rem;
+    }
+    .article-card {
+        width: 90vw;
+        margin-top: 1rem;
+    }
+    .article-filter-form {
+        margin-bottom: 0.5rem;
+    }
+}
+@media (max-width: 950px) {
+    .no-doctors {
+      font-size: 1.75rem;
+      padding: 6.5rem 1rem;
+    }
+    .article-filter-form {
+        width: 90%;
+    }
+    .category {
+        margin: 1.5rem 1rem 0.5rem 1.5rem;
+    }
+}
+@media (max-width: 800px) {
+    .search-input {
+        padding: 0.625rem 0.15rem 0.625rem 0.7rem;
+    }
+    .article-filter-form {
+        gap: 1.5rem;
+    }
+    .category-select {
+        font-size: 0.9rem;
+    }
+    .search-wrapper {
+        flex: 2;
+    }
+
+    .button-container {
+        margin: 3.5rem 0.5rem;
+    }
+    .img_article {
+        max-width: 12rem;
+        height: 11rem;
+    }
+    .right-section {
+        padding: 1.75rem 0.75rem 0.9rem 0;
+    }
+    .article_text {
+        padding: 0.75rem 1rem;
+    }
+}
+@media (max-width: 650px) {
+    .btn {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.9rem;
+    }
+    .article-filter-form {
+        gap: 1.1rem;
+    }
+    .category-select {
+        font-size: 0.85rem;
+    }
+    .search-input {
+        padding: 0.625rem 0 0.625rem 0.7rem;
+        font-size: 0.9rem;
+    }
+
+    .tag-badge {
+        margin: 1rem 0 0 0;
+    }
+    .category {
+        display: none;
+    }
+    .img_article {
+        max-width: 10rem;
+        height: 9rem;
+    }
+    .right-section {
+        padding: 1rem 0.75rem 0.9rem 0;
+    }
+    .create_consultation_button {
+        padding: 0.3rem 0.1rem;
+        font-size: 0.9rem;
+    }
+    .button-container {
+        margin: 2rem 0.5rem;
+    }
+}
+@media (max-width: 570px) {
+    .search-input,
+    .category-select {
+        padding: 0.5rem 0 0.5rem 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        font-size: 0.85rem;
+    }
+
+    .search-button img {
+        width: 17px;
+        height: 17px;
+    }
+    .article-filter-form {
+        width: 97%;
+    }
+    .search-input {
+        width: 95%;
+    }
+    .search-button {
+        right: 1rem;
+    }
+    .article-filter-form {
+        gap: 0.5rem;
+    }
+
+    .article-card {
+        width: 85vw;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .left-section {
+        display: contents; 
+    }
+    .tag-badge,
+    .tag-badge.ended {
+        order: 1;
+    }
+    .right-section {
+        display: contents; 
+    }
+    .img_article {
+        order: 2;
+        max-width: 60vw;
+        margin: 1rem auto 0;
+        height: 27vh;
+    }
+    .article_text {
+        order: 3;
+        display: flex;
+        flex-direction: column;
+        width: 80vw;
+        padding: 0.75rem 0;
+        margin: auto;
+    }
+    .button-container {
+        order: 4;
+        margin: 0 0.5rem 1rem;
+    }
+    .create_consultation_button {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    .title_article {
+        font-size: 1.25rem;
+    }
+    .date, .description {
+        font-size: 0.9rem;
+    }
+
+    .link_articles {
+        width: 5rem;
+        display: inline-block;
+    }
+}
+@media (max-width: 500px) {
+    .article-filter-form {
+        display: table;
+    }
+    .category-select,
+    .btn {
+        display: inline-block;
+        width: 48%;
+        margin: 0 1%;
+    }
+    .search-wrapper {
+        margin-bottom: 1rem;
+    }
+    .btn {
+        padding: 0.55rem 0.75rem;
+    }
+    .section-title {
+        font-size: 2rem;
+        margin: 1rem;
+    }
+}
+@media (max-width: 400px) {
+    .section-title {
+        font-size: 2rem;
+        margin: 1rem;
+    }
+    .no-articles {
+        font-size: 1.35rem;
+        padding: 2rem 1rem;
+        margin: 0;
+    }
+    .articles-section {
+        padding-bottom: 2rem;
+    }
+
+    .create_consultation_button {
+        padding: 0.5rem 1.5rem;
+        font-size: 0.85rem;
+    }
+    .tag-badge {
+        font-size: 0.9rem;
+        margin: 0.75rem 0 0 0;
+    }
+    .article-card {
+        width: 90vw;
+    }
+    .article_text {
+        width: 85vw;
+    }
+    .link_articles {
+        width: 22vw;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 375px) {
+    .img_article {
+        max-width: 50vw;
+        height: 20vh;
+    }
+    .article_text {
+        padding: 0.5rem;
+    }
+    .date, .description, .link_articles {
+        font-size: 0.85rem;
+    }
+}
+
+
+
+
+
+
+
+

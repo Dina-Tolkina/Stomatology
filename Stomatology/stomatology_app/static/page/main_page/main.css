@@ -1,0 +1,1182 @@
+.content-wrapper {
+  display: flow;
+}
+
+.container_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  width: 100%;
+  box-shadow: 0 6px 10px -4px hsla(220, 67%, 12%, 0.12);
+  height: calc(94vh - 3.5rem);
+}
+
+.text_block {
+  position: relative;
+  padding-right: 2rem;
+  padding-left: 2.5rem;
+  overflow: visible;
+  z-index: 1;
+}
+
+.item__headline {
+  margin: 0;
+  font-size: 2.7rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  border-left: 5px solid var(--first-color);
+  padding-left: 1rem;
+}
+
+.text_block p {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.text_block::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 53%;
+  transform: translateX(-50%) rotate(20deg);
+  width: 110%;
+  height: 170%;
+  background: linear-gradient(275deg, rgb(0 178 242), rgb(255, 255, 255));
+  border-radius: 55% 45% 74% 35%;
+  opacity: 0.27;
+  z-index: -1;
+}
+
+button {
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  background-color: var(--first-color);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--definition-text);
+}
+
+.container_header_img {
+  position: relative;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+}
+
+.container_header_img img{
+  width: 30rem;
+}
+
+.hexagon_img {
+  mask-image: url('/static/GLOBAL/img/hex.png');
+  -webkit-mask-image: url('/static/GLOBAL/img/hex.png');
+  
+  mask-size: contain;
+  -webkit-mask-size: contain;
+
+  mask-position: center;
+  -webkit-mask-position: center;
+  
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.masked-element:first-child {
+  z-index: 2;
+  transform: translate(20%, 25%) scale(0.8);
+  opacity: 0.9;
+}
+
+.masked-element {
+  z-index: 1;
+  transform: translate(-5%, -15%) scale(1.2);
+  opacity: 0.85;
+}
+
+.small-hexagon {
+  position: absolute;
+  width: 5rem; 
+  height: 5rem;
+  background-color: var(--first-color);
+  
+  mask-image: url('/static/GLOBAL/img/hex.png');
+  -webkit-mask-image: url('/static/GLOBAL/img/hex.png');
+
+  mask-size: contain;
+  -webkit-mask-size: contain;
+
+  mask-position: center;
+  -webkit-mask-position: center;
+
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.first-hex {
+  width: 7.5rem;
+  height: 7.5rem;
+  transform: translate(-50%, -130%) rotate(15deg);
+  opacity: 0.95;
+}
+
+.second-hex {
+  width: 6rem;
+  height: 6rem;
+  transform: translate(50%, 225%) rotate(-15deg);
+  opacity: 0.55;
+}
+
+/* Блок О нас */
+.about_us {
+  margin: 10rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; 
+  gap: 1rem;
+}
+
+.about_us_text {
+  margin-left: 2rem;
+  padding: 2rem;
+  background-color: rgba(79, 208, 255, 0.784);
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+  border-radius: 30px;
+  text-align: left;
+  font-size: 1.2em;
+}
+
+.about_us_text p {
+  padding-left: 1.5rem;
+}
+
+.section-title {
+  font-size: 3.5rem;
+  margin: 1.5rem;
+}
+
+.container_body_img {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container_body_img img {
+  height: auto; 
+  border-radius: 8px;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+}
+
+.overlay-image img {
+  width:35rem;
+  margin-left: 60%;
+}
+.large-image img {
+  width: 20rem;
+  margin-left: -300%;
+}
+
+/* Блок приемущества */
+.clinic-benefits {
+  margin: 10rem 2rem;
+}
+.swiper {
+  max-width: 83.5vw;
+  position: relative;
+  margin: 0 auto;
+  overflow: visible; 
+  padding: 0 5rem;
+}
+
+.swiper-wrapper {
+  display: flex;
+  margin-top: 2rem !important;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  transition: transform 0.5s ease;
+}
+
+.advantage_card {
+  padding: 0.5rem 1rem;
+  width: 90%;
+  height: 25rem;
+  background-color: rgba(46, 199, 255, 0.786);
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  text-align: center; 
+}
+
+.circle-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.circle-image img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+
+.swiper-button-prev, .swiper-button-next {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.advantage_card_text {
+  font-size: 1.1rem;
+}
+
+/* Блок услуги */
+.container_service_card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.5rem;
+  justify-content: center;
+  margin-top: 2.5rem;
+  background: var(--first-color);
+  padding: 3rem;
+}
+
+.service_card {
+  width: 15rem;
+  height: auto;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3sease-in-out;
+}
+
+.service_card:hover {
+  transform: scale(1.05); 
+}
+
+.image-container img {
+  width: 7rem;
+  height: 7rem;
+}
+
+.container_service_card h3 {
+  font-size: 2rem;
+}
+
+/* Блок врачи */
+.no-doctors {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.doctors-preview {
+  width: 100vw;
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.doctors-header {
+  align-items: center;
+  justify-content: center; 
+}
+
+.section-title_doctors {
+  font-size: 3.5rem;
+  margin: 0.5rem;
+}
+
+.doctors-link-container {
+  display: flex;
+  justify-content: right;
+  padding-right: 4.5rem;
+}
+.doctors-link {
+  font-size: 1.2rem;
+  color: var(--text-color);
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.doctors-link:hover {
+  color: var(--definition-text);
+}
+
+.doctors-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap; 
+}
+
+.doctor-card {
+  width: 100% !important;
+  height: 25rem !important;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 7px;
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+  text-align: center;
+  transition: transform 0.3s ease;
+  margin-top: 1.5rem;
+  
+}
+
+.doctor-card:hover {
+  transform: scale(1.05);
+}
+
+.doctor-card img {
+  width: 15rem; 
+  height: 17rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.doctor-title {
+  font-size: 1.3rem;
+  margin: 0.5rem;
+}
+.doctor-position {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.experience p {
+  font-size: 1.1rem;
+  color: var(--definition-text);
+}
+.more-doctors {
+  margin-top: 20px;
+}
+
+.swiper-container {
+    width: 90%;
+    position: relative;
+    margin: 0 auto;
+    overflow: visible;
+    margin: auto;
+}
+
+.next-arrow,
+.prev-arrow {
+  color: var(--definition-text);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); 
+  z-index: 10;
+  margin-top: -1.5rem; 
+}
+
+.swiper-container:hover .next-arrow,
+.swiper-container:hover .prev-arrow {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.next-arrow {
+  right: -50px;
+}
+
+.prev-arrow {
+  left: -50px;
+}
+
+.next-arrow::after,
+.prev-arrow::after {
+  font-size: 20px;
+  color: var(--definition-text);
+}
+
+@media (min-width: 1950px) and (max-width: 3000px) {
+  .text_block::before {
+    width: 100%;
+    height: 250%;
+    top: -85%;
+  }
+  .item__headline {
+    border-left: none !important;
+  }
+  .container_header_img img {
+    width: 40rem !important;
+  }
+  .first-hex {
+    width: 11rem;
+    height: 11rem;
+    transform: translate(-50%, -140%) rotate(15deg);
+  }
+  .second-hex {
+    width: 10rem;
+    height: 10rem;
+    transform: translate(50%, 180%) rotate(-15deg);
+  }
+  .swiper {
+    max-width: 78.5vw;
+  }
+
+  .advantage_card {
+    height: 28rem;
+  }
+  .advantage_card_text {
+    font-size: 1.35rem;
+  }
+  .circle-image { 
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .doctor-card {
+    height: 27rem !important;
+  }
+  .doctor-card img {
+    width: 17.5rem;
+  }
+  .doctor-title {
+    font-size: 1.5rem;
+  }
+  .experience p, .doctor-position {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1900px) and (max-width: 1949px) {
+  .text_block::before {
+    width: 100%;
+    height: 200%;
+    top: -60%;
+  }
+  .container_header_img img {
+    width: 35rem !important;
+  }
+  .first-hex {
+    width: 9rem;
+    height: 9rem;
+    transform: translate(-50%, -155%) rotate(15deg);
+  }
+  .second-hex {
+    width: 8rem;
+    height: 8rem;
+  }
+  .item__headline {
+    border-left: none !important;
+  }
+
+  .doctor-card {
+    height: 27rem !important;
+  }
+  .doctor-card img {
+    width: 17.5rem;
+  }
+  .doctor-title {
+    font-size: 1.5rem;
+  }
+  .experience p, .doctor-position {
+    font-size: 1.3rem;
+  }
+}
+@media (min-width: 1700px) and (max-width: 1899px) {
+  .text_block::before {
+    width: 100%;
+    height: 200%;
+    top: -55%;
+  }
+}
+@media (min-width: 1540px) and (max-width: 3000px){
+  .swiper {
+    max-width: 77vw;
+  }
+}
+@media (min-width: 1530px) {
+  .container_header {
+    padding: 2rem;
+    height: calc(94vh - 3.5rem);
+  }
+  .container_header_img img {
+    width: 30rem;
+  }
+  .about_us_text {
+    max-width: 40%;
+  }
+  .container_body_img {
+    max-width: 60%;
+  }
+  .text_block {
+    max-width: 40%;
+  }
+
+  .container_body_img {
+    width: 50vw;
+  }
+  .overlay-image img {
+    width: 35rem;
+    margin-left: 40%;
+  }
+  .large-image img {
+    width: 17rem;
+    margin-left: -350%;
+  }
+
+  .advantage_card {
+    max-width: 17vw;
+  }
+
+  .doctor-card {
+    max-width: 17vw !important;
+  }
+  .swiper-container {
+    width: 99%;
+  }
+}
+@media (max-width: 1530px) {
+  .container_header_img img {
+    width: 24rem;
+  }
+  .first-hex {
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  .second-hex {
+    width: 5.5rem;
+    height: 5.5rem;
+    transform: translate(50%, 200%) rotate(-15deg);
+  }
+  .text_block {
+    width: 37%;
+  }
+
+  .about_us, .clinic-benefits{
+    margin: 3.5rem 1rem;
+  }
+  .about_us_text {
+    width: 40vw;
+  }
+  .container_body_img {
+    width: 45vw;
+  }
+  .overlay-image img {
+    width: 28rem;
+    margin-left: 35%;
+  }
+  .large-image img {
+    width: 14rem;
+    margin-left: -350%;
+  }
+
+  .doctor-card {
+    max-width: 16.9vw !important;
+  }
+}
+@media (max-width: 1400px) {
+  .item__headline {
+    font-size: 2.5rem;
+  }
+  .text_block p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .doctor-card img {
+    width: 14rem; 
+  }
+  .swiper-container {
+    width: 95%;
+  }
+}
+@media (max-width: 1350px) {
+  .container_header_img img {
+    width: 22rem;
+  }
+  .item__headline {
+    font-size: 2.3rem;
+  }
+
+  .swiper {
+    max-width: 95vw;
+  }
+  .swiper {
+    max-width: 75vw;
+  }
+  .advantage_card {
+    padding: 0.5rem;
+  }
+
+  .doctor-card {
+    max-width: 19vw !important;
+  }
+}
+@media (max-width: 1250px) {
+  .container_header_img img {
+    width: 20rem;
+  }
+  .container_header_img {
+    width: 50%;
+  }
+  .first-hex {
+    width: 5rem;
+    height: 5rem;
+  }
+  .second-hex {
+    width: 5rem;
+    height: 5rem;
+    transform: translate(50%, 190%) rotate(-15deg);
+  }
+
+  .swiper-container {
+    width: 98%;
+  }
+
+  .doctor-card {
+    max-width: 20vw !important;
+  }
+}
+@media (max-width: 1175px) {
+  .item__headline {
+    font-size: 2.2rem;
+  }
+  .text_block {
+    width: 40%;
+  }
+  .overlay-image img {
+    width: 24rem;
+  }
+  .large-image img {
+    width: 11rem;
+    margin-left: -375%;
+  }
+
+  .swiper-wrapper {
+    margin-top: 1rem !important;
+  }  
+  .doctors-preview {
+    padding: 4rem 0;
+  }
+  .doctor-card {
+    max-width: 20.5vw !important;
+  }
+}
+@media (max-width: 1045px) {
+  .container_header_img img {
+    width: 17.5rem;
+  }
+  .first-hex {
+    width: 4.5rem;
+    height: 5rem;
+  }
+  .second-hex {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+  .item__headline {
+    font-size: 2rem;
+  }
+  .text_block p {
+    font-size: 1.1rem;
+  }
+  button {
+    padding: 0.65rem 1.7rem;
+    font-size: 0.9rem;
+  }
+  .about_us_text h1 {
+    font-size: 2.5rem;
+    padding-left: 1rem;
+  }
+  .about_us_text p {
+    font-size: 1.1rem;
+  }
+  .large-image img {
+    width: 10rem;
+    margin-left: -300%;
+  }
+  .overlay-image img {
+    width: 20rem;
+    margin-left: 45%;
+  }
+
+  .advantage_card { 
+    width: 95%;
+  }
+
+  .doctor-card {
+    max-width: 23vw !important;
+  }
+}
+@media (max-width: 1000px) {
+  .swiper {
+    max-width: 67vw;
+  }
+
+  .swiper-container {
+    width: 89%;
+  }
+  .swiper-wrapper {
+    margin-top: 0rem !important;
+  }  
+  .doctor-card {
+    max-width: 25vw !important;
+  }
+  .doctor-card img {
+    width: 14rem; 
+    height: 17rem;
+  }
+}
+
+@media (max-width: 975px) {
+  .container_header_img img {
+    width: 16rem;
+  }
+  .first-hex {
+    width: 4rem;
+    height: 4rem;
+  }
+  .second-hex {
+    width: 4rem;
+    height: 4rem;
+  }
+  .item__headline {
+    font-size: 1.75rem;
+  }
+  .text_block p {
+    font-size: 1rem;
+  }
+  .overlay-image img {
+    width: 19rem;
+    margin-left: 35%;
+  }
+  .large-image img {
+    width: 9rem;
+    margin-left: -325%;
+  }
+  .section-title, .section-title_doctors {
+    margin: 0;
+  }
+
+  .service_card {
+    width: 14rem;
+  }
+  .container_service_card h3 {
+    font-size: 1.75rem;
+    margin: 1rem;
+  }
+  .doctors-link {
+    font-size: 1.1rem;
+  }
+  .doctors-link-container {
+    padding-right: 2.5rem;
+  }
+}
+
+@media (max-width: 885px) {
+  .container_header_img img {
+    width: 14.5rem;
+  }
+  .first-hex {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .second-hex {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  .item__headline {
+    font-size: 1.5rem;
+  }
+  .text_block p {
+    font-size: 0.9rem;
+  }
+
+  .swiper {
+    max-width: 85vw;
+  }
+
+  .service_card {
+    width: 13rem;
+  }
+  .container_service_card {
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .swiper-container {
+    width: 90%;
+  }
+  .doctor-card {
+    max-width: 25vw !important;
+  }
+}
+@media (max-width: 800px) {
+  .section-title, .section-title_doctors {
+    font-size: 2.5rem;
+  }
+  
+  .container_header_img img {
+    width: 13rem;
+  }
+  .first-hex {
+    width: 3rem;
+    height: 3rem;
+  }
+  .second-hex {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .about_us_text {
+    width: 75vw;
+  }
+  .container_body_img {
+    display: none;
+  }
+  .about_us_text {
+    margin: auto;
+  }
+
+  .container_service_card {
+    margin-top: 1.5rem;
+  }
+  .container_service_card h3 {
+    margin: 0.5rem;
+  }
+  .service_card {
+    width: 12.5rem;
+  }
+
+  .doctor-card {
+    max-width: 31vw !important;
+  }
+  .doctor-card img {
+    width: 15rem;
+    height: 17rem;
+  }
+  .doctors-link {
+    font-size: 1rem;
+  }
+  .doctors-link-container {
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 750px) {
+  .doctor-card {
+    max-width: 35vw !important;
+  }
+}
+@media (max-width: 700px) {
+  .container_header {
+    height: calc(92vh - 3.5rem);
+  }
+  .container_header_img {
+    display: none;
+  }
+  .text_block {
+    width: 85%;
+  }
+  .item__headline {
+    border-left: none; 
+    padding-left: 0;
+    padding: 2rem 2rem 0 2rem;
+  }
+  .text_block::before {
+    top: -65%;
+    width: 90%;
+    height: 250%;
+  }
+
+  .swiper {
+    max-width: 50vw;
+  }
+
+  .container_service_card h3 {
+    font-size: 1.6rem;
+  }
+  .container_service_card {
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .service_card {
+    width: 11rem;
+  }
+
+  .doctor-card {
+    max-width: 35vw !important;
+  }
+}
+@media (max-width: 675px) {
+  .text_block::before {
+    top: -50%;
+    height: 200%;
+  }
+  .text_block p {
+    padding: 0 4.5rem 0 4.5rem;
+  }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 40px !important;
+  }
+
+  .doctor-card {
+    max-width: 36vw !important;
+  }
+  .doctor-card img {
+    width: 14rem;
+    height: 16rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .swiper {
+    max-width: 60vw;
+  }
+
+  .doctor-card {
+    max-width: 45vw !important;
+  }
+  .swiper-container {
+    width: 87%;
+  }
+  .doctors-preview {
+    padding: 2rem 0;
+  }
+}
+
+@media (max-width: 550px) {
+  .text_block::before {
+    top: -40%;
+    height: 180%;
+  }
+
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 35px !important;
+  }
+}
+@media (max-width: 500px) {
+  .text_block::before {
+    top: -25%;
+    height: 155%;
+    width: 85%;
+  }
+
+  .section-title, .section-title_doctors {
+    font-size: 2.2rem;
+  }
+
+  .doctor-card {
+    max-width: 50vw !important;
+  }
+  .swiper-container {
+    width: 95%;
+  }
+  .doctor-card img {
+    width: 14.5rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .swiper {
+    max-width: 70vw;
+  }
+
+  .doctor-card img {
+    width: 13.5rem;
+    height: 15rem;
+  }  
+  .doctor-card {
+    height: 23rem !important;
+  }
+  .doctor-title {
+    font-size: 1.25rem;
+  }
+  .experience p, .doctor-position {
+    font-size: 1rem;
+    margin: 0.5rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .section-title, .section-title_doctors {
+    font-size: 1.85rem;
+  }
+
+  .text_block::before {
+    top: -35%;
+    height: 160%;
+    width: 85%;
+  }
+  .item__headline {
+    padding: 0;
+  }
+  .text_block p {
+    padding: 0;
+  }
+  .text_block::before {
+    top: -45%;
+    height: 190%;
+    width: 89%;
+  }
+
+  .about_us_text {
+    padding: 1rem;
+  }
+  .about_us_text h1 {
+    font-size: 2.2rem;
+  }
+  .about_us_text p {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  .service_card {
+    width: 9.5rem;
+  }
+  .image-container img {
+    width: 6rem;
+    height: 6rem;
+  }
+  .container_service_card h3 {
+    font-size: 1.4rem;
+  }
+
+  .doctor-card img {
+    width: 12.5rem;
+    height: 14rem;
+  } 
+  .doctors-link {
+    font-size: 0.9rem;
+  }
+  .doctors-link-container {
+    padding-right: 1rem;
+  }
+  .no-doctors {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 375px) {
+  .section-title, .section-title_doctors{
+    font-size: 1.7rem;
+  }
+
+  .item__headline {
+    font-size: 1.35rem;
+  }
+  .text_block p {
+    font-size: 0.85rem;
+  }
+  button {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.85rem;
+  }
+  .text_block::before {
+    top: -40%;
+    height: 175%;
+  }
+
+  .advantage_card_text {
+    font-size: 1rem;
+  }
+
+  .service_card {
+    width: 8.5rem;
+  }
+  .container_service_card h3 {
+    font-size: 1.25rem;
+  }
+  .container_service_card {
+    gap: 0.7rem;
+  }
+
+  .doctor-card img {
+    width: 12rem;
+    height: 13.5rem;
+  } 
+  .doctor-title {
+    font-size: 1.15rem;
+  }
+  .experience p, .doctor-position {
+    font-size: 0.95rem;
+  }
+  .doctor-card {
+    height: 21rem !important;
+  }
+
+  .swiper-container {
+    width: 70% !important;
+  }
+  .doctor-card {
+    max-width: 62vw !important;
+  }
+  .doctor-card img {
+    width: 13rem;
+  } 
+}
+@media (max-width: 330px) {
+  .item__headline {
+    font-size: 1.25rem;
+  }
+  .text_block p {
+    font-size: 0.8rem;
+  }
+  button {
+    font-size: 0.8rem;
+  }
+  .text_block::before {
+    top: -30%;
+    height: 160%;
+  }
+
+  .about_us_text p {
+    font-size: 0.9rem;
+  }
+  .about_us_text h1 {
+    font-size: 2rem;
+  }
+  .about_us, .clinic-benefits {
+    margin: 3rem 0.5rem;
+  }
+  .about_us_text p {
+    padding-left: 0;
+  }
+  .swiper-button-next:after, .swiper-button-prev:after {
+    font-size: 25px !important;
+  }
+
+  .container_service_card {
+    padding: 0.5rem;
+  }
+
+  .swiper-container {
+    width: 70% !important;
+  }
+  .doctor-card {
+    max-width: 60vw !important;
+  }
+  .doctor-card img {
+    width: 12.5rem;
+  } 
+}

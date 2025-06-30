@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{% static 'components/form_user/form_user.css' %}">
+{% endblock %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div class="parralax-wrap">
+  <section class="form_user">
+  <h2>Регистрация</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Зарегистрироваться</button>
+  </form>
+  </section>
+  {% if errors %}
+    <div id="error-alert" class="error-alert">
+      <h3>Ошибка заполнения формы</h3>
+      <div class="error-body">
+        <img src="/static/GLOBAL/img/icon-error.png" alt="Ошибка" class="error-icon">
+        <ul>
+          {% for field in form %}
+              {% for error in field.errors %}
+                  <li>{{ error }}</li>
+              {% endfor %}
+          {% endfor %}
+          {% for error in form.non_field_errors %}
+              <li>{{ error }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      <label for="close-error" class="close-btn" onclick="this.parentElement.style.display='none';">×</label>
+    </div>
+  {% endif %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+    $('#id_phone_number').mask('+7 (000) 000-00-00');
+  });
+</script>
+{% endblock %}
+{% endblock %}
+

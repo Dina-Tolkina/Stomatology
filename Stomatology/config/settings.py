@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-5b1zv+qa$!mmp9mvxy-6fhhjeu234shw5@!a#87lizg7ga_4^k
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,8 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rangefilter',
     'stomatology_app',
+    'django_ckeditor_5',
+    'smart_selects',
 ]
+
+LOGIN_URL = '/login/'
+AUTH_USER_MODEL = 'stomatology_app.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +63,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,11 +89,9 @@ DATABASES = {
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
         'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT', default='5432'),
+        'PORT': config('DB_PORT'),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -110,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru-RU'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'
 
 USE_I18N = True
 
@@ -132,3 +136,55 @@ STATICFILES_DIRS = []
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10000
+
+CKEDITOR_5_CONFIGS = {
+    'extends': {
+        'toolbar': {
+            'items': [ 'sourceEditing', 'heading', 'alignment', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'underline', 'strikethrough',
+                     'fontColor', '|', 
+                    'bulletedList', 'numberedList', '|',  'blockQuote', '|',
+                    'imageUpload', 'mediaEmbed', '|',
+                    'insertTable', '|',
+                    'horizontalLine',
+                    ],
+            'shouldNotGroupWhenFull': True,
+        },
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side',  '|'],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ]
+
+        },
+        'table': {
+            'contentToolbar': [ 'tableColumn', 'tableRow', 'mergeTableCells',
+            'tableProperties', 'tableCellProperties' ]
+        },
+        'heading' : {
+            'options': [
+                { 'model': 'paragraph', 'title': 'Загаловок', 'class': 'ck-heading_paragraph' },
+                { 'model': 'heading1', 'view': 'h1', 'title': 'Загаловок 1', 'class': 'ck-heading_heading1' },
+                { 'model': 'heading2', 'view': 'h2', 'title': 'Загаловок 2', 'class': 'ck-heading_heading2' },
+                { 'model': 'heading3', 'view': 'h3', 'title': 'Загаловок 3', 'class': 'ck-heading_heading3' },
+                { 'model': 'heading4', 'view': 'h4', 'title': 'Загаловок 4', 'class': 'ck-heading_heading4' },
+                { 'model': 'heading5', 'view': 'h5', 'title': 'Загаловок 5', 'class': 'ck-heading_heading5' },
+                { 'model': 'heading6', 'view': 'h6', 'title': 'Загаловок 6', 'class': 'ck-heading_heading6' },
+            ]
+        }
+    },
+    'list': {
+        'properties': {
+            'styles': 'True',
+            'startIndex': 'True',
+            'reversed': 'True',
+        }
+    }
+}
